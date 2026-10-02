@@ -16,5 +16,5 @@ export default async function ChatPage() {
   const ar = (await getLocale()) === "ar";
   const pick = (n: { name_ar: string; name_en: string }) =>
     ar ? n.name_ar : n.name_en;
-  return <Chat university={pick(profile.university)} major={pick(profile.major)} />;
+  return <Chat university={pick(profile.university)} major={pick(profile.major)} level={profile.level} />;
 }

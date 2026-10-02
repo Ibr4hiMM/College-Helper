@@ -37,6 +37,7 @@ await dark(p, false);
 
 await p.locator("#university_id").selectOption("ksu");
 await p.locator("#major_id").selectOption({ index: 1 });
+await p.locator("#level").selectOption("final");
 await p.fill("#email", `review+${Date.now()}@example.org`);
 await p.fill("#password", "review-pass-1");
 await p.fill("#repeat", "review-pass-1");

@@ -11,6 +11,7 @@ import Markdown from "react-markdown";
 
 import { Header } from "@/components/header";
 import { LogoutButton } from "@/components/logout-button";
+import type { Level } from "@/lib/profile";
 import { cn } from "@/lib/utils";
 
 type Message = UIMessage<{ at: number }>;
@@ -31,8 +32,9 @@ function Tick({ label }: { label: string }) {
   );
 }
 
-export function Chat({ university, major }: { university: string; major: string }) {
+export function Chat({ university, major, level }: { university: string; major: string; level: Level | null }) {
   const t = useTranslations("chat");
+  const lv = useTranslations("levels");
   const locale = useLocale();
   const { messages, sendMessage, status, stop, error, regenerate } = useChat<Message>();
   const [text, setText] = useState("");
@@ -98,7 +100,7 @@ export function Chat({ university, major }: { university: string; major: string 
   const lastRole = messages.at(-1)?.role;
   const suggestions = (["one", "two", "three"] as const).map((k) => ({
     ordinal: t(`ordinal.${k}`),
-    text: t(`suggestions.${k}`, { major }),
+    text: t(`suggestions.${level ?? "default"}.${k}`, { major }),
   }));
 
   const stopMark = (
@@ -197,14 +199,16 @@ export function Chat({ university, major }: { university: string; major: string 
 
       <main className="sheet mx-auto flex min-h-0 w-full max-w-[50rem] flex-1 flex-col bg-paper text-print shadow-sheet">
         {/* The booklet's printed header form, already filled in. */}
-        <dl className="grid shrink-0 grid-cols-2 border-b-2 border-print sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1.3fr)_minmax(0,1fr)_auto]">
+        {/* gap-px over spot ink draws the cell rules at any width; phones drop the date to keep two rows. */}
+        <dl className="grid shrink-0 grid-cols-2 gap-px border-b-2 border-print bg-spot/40 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)_minmax(0,0.9fr)_minmax(0,1fr)_auto]">
           {[
-            [t("university"), university, "border-e border-b sm:border-b-0"],
-            [t("major"), major, "border-b sm:border-b-0 sm:border-e"],
-            [t("date"), <time key="d" suppressHydrationWarning>{today}</time>, "border-e"],
-            [t("questions"), num.format(questions), ""],
-          ].map(([label, value, edges]) => (
-            <div key={String(label)} className={cn("min-w-0 border-spot/40 px-4 py-2", edges as string)}>
+            [t("university"), university],
+            [t("major"), major],
+            [t("level"), level ? lv(`short.${level}`) : "—"],
+            [t("date"), <time key="d" suppressHydrationWarning>{today}</time>, "max-sm:hidden"],
+            [t("questions"), num.format(questions)],
+          ].map(([label, value, extra]) => (
+            <div key={String(label)} className={cn("min-w-0 bg-paper px-4 py-2", extra as string | undefined)}>
               <dt className="text-[0.6875rem] font-medium text-spot">{label}</dt>
               <dd dir="auto" className="text-balance break-words text-[0.9375rem] font-semibold tabular-nums">
                 {value}

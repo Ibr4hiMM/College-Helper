@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { AuthPanel, Field, FormError, PanelNote, SelectField, SubmitButton, linkClass } from "@/components/field";
 import { authErrorKey } from "@/lib/auth-error";
-import { signUpSchema } from "@/lib/profile";
+import { LEVELS, signUpSchema } from "@/lib/profile";
 import { createClient } from "@/lib/supabase/client";
 
 type Named = { name_ar: string; name_en: string };
@@ -24,6 +24,7 @@ export function SignUpForm({
   const t = useTranslations("signUp");
   const c = useTranslations("common");
   const e = useTranslations("errors");
+  const lv = useTranslations("levels");
   const locale = useLocale();
   const router = useRouter();
   const [universityId, setUniversityId] = useState("");
@@ -44,19 +45,20 @@ export function SignUpForm({
       repeat: String(form.get("repeat")),
       university_id: String(form.get("university_id") ?? ""),
       major_id: majorRaw ? Number(majorRaw) : undefined,
+      level: String(form.get("level") ?? "") || undefined,
     });
     if (!parsed.success) {
       setError(parsed.error.issues[0].message);
       return;
     }
-    const { email, password, university_id, major_id } = parsed.data;
+    const { email, password, university_id, major_id, level } = parsed.data;
     setLoading(true);
     setError(null);
     const { data, error } = await createClient().auth.signUp({
       email,
       password,
       options: {
-        data: { university_id, major_id },
+        data: { university_id, major_id, level },
         emailRedirectTo: `${window.location.origin}/auth/confirm?next=/chat`,
       },
     });
@@ -121,6 +123,14 @@ export function SignUpForm({
           {filtered.map((m) => (
             <option key={m.id} value={m.id}>
               {name(m)}
+            </option>
+          ))}
+        </SelectField>
+        <SelectField id="level" name="level" label={t("level")} aria-required defaultValue="">
+          <option value="">{t("chooseLevel")}</option>
+          {LEVELS.map((l) => (
+            <option key={l} value={l}>
+              {lv(`long.${l}`)}
             </option>
           ))}
         </SelectField>

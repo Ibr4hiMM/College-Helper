@@ -51,10 +51,12 @@
     "caption": "Student details",
     "notesTitle": "Instructions",
     "notes": {
-      "one": "Choose your university, then your major.",
+      "one": "Choose your university, major and study level.",
       "two": "Ask about your courses, assignments, research and projects.",
       "three": "Every answer is written for your major, and the margin shows what the assistant did."
-    }
+    },
+    "level": "Study level",
+    "chooseLevel": "Choose your level"
   },
   "forgot": {
     "title": "Reset your password",
@@ -88,9 +90,10 @@
     "userExists": "An account with this email already exists. Try logging in.",
     "weakPassword": "That password is too easy to guess. Choose a stronger one.",
     "rateLimited": "Too many attempts. Wait a moment and try again.",
-    "profileInvalid": "We could not save your university and major. Check both and try again.",
+    "profileInvalid": "We couldn't save your study details (university, major and level). Check them and try again.",
     "generic": "Something went wrong. Please try again.",
-    "emailNotConfirmed": "Confirm your email first using the link we sent, then log in."
+    "emailNotConfirmed": "Confirm your email first using the link we sent, then log in.",
+    "levelRequired": "Choose your study level."
   },
   "chat": {
     "university": "University",
@@ -114,9 +117,36 @@
       "three": "Question 3"
     },
     "suggestions": {
-      "one": "Explain the core ideas I should master first in {major}.",
-      "two": "Help me build a weekly study plan for my {major} courses.",
-      "three": "How do I start a research project in {major}?"
+      "default": {
+        "one": "Explain the core ideas I should master first in {major}.",
+        "two": "Help me build a weekly study plan for my {major} courses.",
+        "three": "How do I start a research project in {major}?"
+      },
+      "prep": {
+        "one": "Help me prepare for my prep-year math and English exams.",
+        "two": "Explain the key {major} terms in Arabic with their English equivalents.",
+        "three": "Review a paragraph I wrote in English and correct it."
+      },
+      "early": {
+        "one": "Explain the core ideas I should master first in {major}.",
+        "two": "Quiz me with short questions on the last topic I studied.",
+        "three": "Help me make a weekly study plan for my {major} courses."
+      },
+      "upper": {
+        "one": "Summarize a {major} paper for me and mark what needs a citation.",
+        "two": "Give me review questions in the style of past exams.",
+        "three": "How do I cite my sources in a {major} report?"
+      },
+      "final": {
+        "one": "Help me scope my graduation project in {major}.",
+        "two": "Give me a research-methods checklist.",
+        "three": "How should I structure my co-op training report?"
+      },
+      "postgrad": {
+        "one": "Review the structure of the argument in a chapter of my thesis.",
+        "two": "Help me build a database search strategy for a {major} topic.",
+        "three": "How do I disclose my use of AI in my thesis?"
+      }
     },
     "inputLabel": "Your message",
     "placeholder": "Write your question here",
@@ -130,6 +160,23 @@
     "assistant": "Assistant's answer",
     "unavailable": "The assistant isn't available right now because the service isn't set up yet, so no answer was written. Try again later.",
     "error": "The answer didn't arrive. Your question is kept here, and you can try again.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "level": "Level"
+  },
+  "levels": {
+    "long": {
+      "prep": "Preparatory year",
+      "early": "Year 1 or 2",
+      "upper": "Year 3 or later",
+      "final": "Final year (project, co-op, internship)",
+      "postgrad": "Postgraduate"
+    },
+    "short": {
+      "prep": "Prep year",
+      "early": "Year 1–2",
+      "upper": "Year 3+",
+      "final": "Final year",
+      "postgrad": "Postgrad"
+    }
   }
 }

@@ -11,11 +11,12 @@ const newEmail = () => `e2e+${Date.now()}-${Math.random().toString(36).slice(2, 
 const locale = (page: Page, value: "en" | "ar") =>
   page.context().addCookies([{ name: "NEXT_LOCALE", value, url: BASE }]);
 
-async function signUp(page: Page, email: string) {
+async function signUp(page: Page, email: string, level = "Year 1 or 2") {
   await locale(page, "en");
   await page.goto("/auth/sign-up");
   await page.getByLabel("University").selectOption({ label: "King Saud University" });
   await page.getByLabel("Major").selectOption({ label: "Computer Science" });
+  await page.getByLabel("Study level").selectOption({ label: level });
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByLabel("Repeat password").fill(password);
@@ -54,9 +55,12 @@ const ask = async (page: Page, text: string) => {
 
 test("sign up, header, English + Arabic replies, log out, log in", async ({ page }) => {
   const email = newEmail();
-  await signUp(page, email);
+  await signUp(page, email, "Final year (project, co-op, internship)");
   await expect(page.getByRole("definition").filter({ hasText: "King Saud University" })).toBeVisible();
   await expect(page.getByRole("definition").filter({ hasText: "Computer Science" })).toBeVisible();
+  // The level shows in the header and steers the suggested questions.
+  await expect(page.getByRole("definition").filter({ hasText: "Final year" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /scope my graduation project in Computer Science/ })).toBeVisible();
 
   await ask(page, "What is my major?");
   await expect(page.locator("article").first()).toContainText(/computer science/i);
@@ -87,11 +91,25 @@ test("mismatched university/major is rejected", async ({ page }) => {
     (el as HTMLSelectElement).add(o);
     (el as HTMLSelectElement).value = v!;
   }, foreign);
+  await page.getByLabel("Study level").selectOption({ label: "Year 1 or 2" });
   await page.getByLabel("Email").fill(newEmail());
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByLabel("Repeat password").fill(password);
   await page.getByRole("button", { name: "Create account" }).click();
   await expect(page.getByText("That major is not offered by the chosen university.")).toBeVisible();
+  await expect(page).toHaveURL(/\/auth\/sign-up$/);
+});
+
+test("sign-up requires a study level", async ({ page }) => {
+  await locale(page, "en");
+  await page.goto("/auth/sign-up");
+  await page.getByLabel("University").selectOption({ label: "King Saud University" });
+  await page.getByLabel("Major").selectOption({ label: "Computer Science" });
+  await page.getByLabel("Email").fill(newEmail());
+  await page.getByLabel("Password", { exact: true }).fill(password);
+  await page.getByLabel("Repeat password").fill(password);
+  await page.getByRole("button", { name: "Create account" }).click();
+  await expect(page.getByText("Choose your study level.")).toBeVisible();
   await expect(page).toHaveURL(/\/auth\/sign-up$/);
 });
 
@@ -173,6 +191,12 @@ test("logged out: /chat redirects and /api/chat is 401", async ({ page, request 
 test("/auth/confirm never redirects off-site", async ({ page }) => {
   await page.goto("/auth/confirm?next=//evil.com");
   await expect(page).toHaveURL(`${BASE}/auth/error`);
+});
+
+test("phone header keeps two rows: level shown, date hidden", async ({ authed: page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await expect(page.getByRole("definition").filter({ hasText: "Year 1–2" })).toBeVisible();
+  await expect(page.getByText("Date", { exact: true })).toBeHidden();
 });
 
 test("no horizontal overflow at 360px", async ({ authed: page }) => {
