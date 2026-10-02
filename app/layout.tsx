@@ -14,18 +14,22 @@ const readex = Readex_Pro({
 const literata = Literata({
   subsets: ["latin"],
   style: ["normal", "italic"],
+  // Answer and margin faces load on demand: auth pages never use them.
+  preload: false,
   variable: "--f-literata",
   display: "swap",
 });
 const naskh = Noto_Naskh_Arabic({
   subsets: ["arabic"],
   weight: ["400", "700"],
+  preload: false,
   variable: "--f-naskh",
   display: "swap",
 });
 const ruqaa = Aref_Ruqaa({
   subsets: ["arabic"],
   weight: ["700"],
+  preload: false,
   variable: "--f-ruqaa",
   display: "swap",
 });

@@ -1,3 +1,4 @@
+// Note: the Anthropic mock formerly used with this script now lives at e2e/mock-anthropic.mjs.
 // One batched inspection round for the booklet redesign: desktop + mobile, ar + en, light + dark, every chat state.
 import { chromium } from "@playwright/test";
 import { mkdirSync } from "node:fs";

@@ -3,13 +3,13 @@ import { type EmailOtpType } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 import { type NextRequest } from "next/server";
 
+import { safeNext } from "@/lib/safe-next";
+
 /** Landing for every auth email link (signup confirm, password reset): PKCE `code` or `token_hash`. */
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const { searchParams } = url;
-  // Resolve against our origin and keep only same-origin paths, so `//x` or `/\x` cannot redirect off-site.
-  const target = new URL(searchParams.get("next") ?? "/chat", url.origin);
-  const next = target.origin === url.origin ? `${target.pathname}${target.search}` : "/chat";
+  const next = safeNext(searchParams.get("next"), url.origin);
 
   const supabase = await createClient();
   const code = searchParams.get("code");

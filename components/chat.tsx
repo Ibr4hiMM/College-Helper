@@ -1,10 +1,12 @@
 "use client";
 
+// Must stay the first import: it configures zod before the AI SDK builds its schemas.
+import "@/lib/zod-jitless";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { Square, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import Markdown from "react-markdown";
 
 import { Header } from "@/components/header";
@@ -66,7 +68,8 @@ export function Chat({ university, major }: { university: string; major: string 
 
   const halt = () => {
     const last = latest.current.at(-1);
-    if (last?.role === "assistant") stopped.current.add(last.id);
+    // Stopped before any text arrived, the last message is still the question: mark that instead.
+    if (last) stopped.current.add(last.id);
     void stop();
   };
 
@@ -114,8 +117,10 @@ export function Chat({ university, major }: { university: string; major: string 
     const content = textOf(m);
     if (m.role === "user") {
       q += 1;
+      const unanswered = stopped.current.has(m.id) && messages[i + 1]?.role !== "assistant" && !(i === messages.length - 1 && streaming);
       return (
-        <li key={m.id} className={cn(row, i > 0 && "mt-rule")}>
+        <Fragment key={m.id}>
+        <li className={cn(row, i > 0 && "mt-rule")}>
           {/* Margin furniture: the number, then the time on its own rule. */}
           <div className="grid content-start justify-items-center">
             <span aria-hidden className={mark}>
@@ -130,6 +135,18 @@ export function Chat({ university, major }: { university: string; major: string 
             {content}
           </p>
         </li>
+        {unanswered && (
+          <li className={row}>
+            <div className="grid content-start justify-items-center">
+              <span aria-hidden className={mark}>
+                {t("a")}
+              </span>
+              <span className="text-xs leading-rule text-pen">{t("stopped")}</span>
+            </div>
+            <span />
+          </li>
+        )}
+        </Fragment>
       );
     }
     const isLast = i === messages.length - 1;
@@ -178,7 +195,7 @@ export function Chat({ university, major }: { university: string; major: string 
         <LogoutButton />
       </Header>
 
-      <div className="sheet mx-auto flex min-h-0 w-full max-w-[50rem] flex-1 flex-col bg-paper text-print shadow-sheet">
+      <main className="sheet mx-auto flex min-h-0 w-full max-w-[50rem] flex-1 flex-col bg-paper text-print shadow-sheet">
         {/* The booklet's printed header form, already filled in. */}
         <dl className="grid shrink-0 grid-cols-2 border-b-2 border-print sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1.3fr)_minmax(0,1fr)_auto]">
           {[
@@ -200,7 +217,7 @@ export function Chat({ university, major }: { university: string; major: string 
           {/* Double red margin rule; it flips sides with the script and never collapses. */}
           <div aria-hidden className="pointer-events-none absolute inset-y-0 start-margin z-10 w-[5px] border-x border-pen/60" />
 
-          <main className="ruled min-h-0 flex-1 overflow-y-auto py-rule">
+          <div className="ruled min-h-0 flex-1 overflow-y-auto py-rule">
             {messages.length === 0 ? (
               <section aria-labelledby="booklet-title" className={row}>
                 <span />
@@ -282,7 +299,7 @@ export function Chat({ university, major }: { university: string; major: string 
             <p role="status" className="sr-only">
               {streaming ? t("writing") : lastRole === "assistant" && !error ? t("done") : ""}
             </p>
-          </main>
+          </div>
 
           {/* The composer is the next ruled line of the booklet. */}
           <form
@@ -320,7 +337,7 @@ export function Chat({ university, major }: { university: string; major: string 
             </p>
           </form>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

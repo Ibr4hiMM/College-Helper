@@ -97,7 +97,7 @@ export function SignUpForm({
           id="university_id"
           name="university_id"
           label={t("university")}
-          required
+          aria-required
           value={universityId}
           onChange={(ev) => setUniversityId(ev.target.value)}
         >
@@ -113,7 +113,7 @@ export function SignUpForm({
           id="major_id"
           name="major_id"
           label={t("major")}
-          required
+          aria-required
           disabled={!universityId}
           defaultValue=""
         >

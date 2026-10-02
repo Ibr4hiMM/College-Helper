@@ -1,4 +1,4 @@
-// Inspection-only mock of the Anthropic Messages stream: realistic markdown answers (sample content, never shipped).
+// Mock of the Anthropic Messages SSE stream for the hermetic e2e suite (sample content, never shipped). Port: E2E_MOCK_PORT (default 4011).
 import http from "node:http";
 
 const AR = (major) =>
@@ -22,6 +22,7 @@ http
       const m = sys.match(/studies (.+?) \((.+?)\)\./);
       const decoded = last.replace(/\\u[0-9a-f]{4}/gi, (x) => String.fromCharCode(parseInt(x.slice(2), 16)));
       const text = /[؀-ۿ]/.test(decoded) ? AR(m?.[2] ?? "") : EN(m?.[1] ?? "");
+      const start = () => {
       res.writeHead(200, { "content-type": "text/event-stream" });
       const ev = (t, d) => res.write(`event: ${t}\ndata: ${JSON.stringify({ type: t, ...d })}\n\n`);
       ev("message_start", { message: { id: "msg_1", type: "message", role: "assistant", model: "x", content: [], stop_reason: null, usage: { input_tokens: 1, output_tokens: 1 } } });
@@ -39,6 +40,12 @@ http
         ev("content_block_delta", { index: 0, delta: { type: "text_delta", text: parts[i++] } });
       }, 35);
       res.on("close", () => clearInterval(iv));
+      };
+      // SLOWSTART holds the first byte so a test can stop the answer before any text arrives.
+      if (last.includes("SLOWSTART")) {
+        const t = setTimeout(start, 1500);
+        res.on("close", () => clearTimeout(t));
+      } else start();
     });
   })
-  .listen(4010, () => console.log("mock-rich up on 4010"));
+  .listen(Number(process.env.E2E_MOCK_PORT ?? 4011), () => console.log("mock-anthropic up"));

@@ -54,3 +54,4 @@ next-env.d.ts
 /gan-harness/eval/*
 !/gan-harness/eval/mock-rich.mjs
 !/gan-harness/eval/shots.mjs
+/gan-harness/lighthouse/

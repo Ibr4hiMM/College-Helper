@@ -53,7 +53,7 @@ export function SelectField({
   return (
     <Row htmlFor={props.id} label={label}>
       <div className="relative">
-        <select {...props} className={`${control} cursor-pointer appearance-none pe-7 invalid:font-normal invalid:text-spot`}>
+        <select {...props} className={`${control} cursor-pointer appearance-none pe-7 has-[option[value='']:checked]:font-normal has-[option[value='']:checked]:text-spot`}>
           {children}
         </select>
         <ChevronDown aria-hidden strokeWidth={1.75} className="pointer-events-none absolute end-0 top-1/2 size-4 -translate-y-1/2 text-spot" />

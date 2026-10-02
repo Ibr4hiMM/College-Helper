@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "sf mono",
+        "createdAt": "2026-10-02T02:18:12.444Z",
+        "reason": "agent: system monospace stack used only for code spans/blocks inside answers (.answer code); monospace for code is sanctioned by the craft floor"
+      }
+    ]
+  }
+}
