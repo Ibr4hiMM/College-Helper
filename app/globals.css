@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The Answer Booklet: only the booklet's own inks exist. HSL triplets. */
+@layer base {
+  :root {
+    --paper: 210 20% 96%;
+    --ruling: 214 50% 85%;
+    --print: 220 12% 10%;
+    --spot: 215 35% 37%;
+    --ballpoint: 228 70% 39%;
+    --pen: 4 63% 48%;
+    --cover: 171 73% 20%;
+    --cover-ink: 156 20% 94%;
+    --cover-soft: 163 26% 77%;
+
+    /* The ruling is the baseline grid: every line box is one rule tall. */
+    --rule: 2rem;
+    --margin: 4.5rem;
+    color-scheme: light;
+  }
+
+  /* Carbon copy: navy-black sheet, dim ruling, pale ink. */
+  .dark {
+    --paper: 222 45% 9%;
+    --ruling: 221 38% 20%;
+    --print: 219 33% 92%;
+    --spot: 217 33% 68%;
+    --ballpoint: 227 100% 81%;
+    --pen: 5 100% 72%;
+    --cover: 171 70% 11%;
+    --cover-ink: 156 22% 91%;
+    --cover-soft: 162 22% 65%;
+    color-scheme: dark;
+  }
+
+  @media (max-width: 639px) {
+    :root {
+      --margin: 3rem;
+    }
+  }
+
+  * {
+    border-color: hsl(var(--spot) / 0.4);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-cover font-print text-cover-ink antialiased;
+    caret-color: hsl(var(--ballpoint));
+  }
+  /* Arabic is never letter-spaced. */
+  html[lang="ar"] * {
+    letter-spacing: 0 !important;
+  }
+
+  ::selection {
+    background: hsl(var(--ballpoint) / 0.2);
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ballpoint));
+    outline-offset: 2px;
+  }
+  /* :where keeps these at :focus-visible weight so utilities like outline-none still win. */
+  :where(.on-cover) :focus-visible {
+    outline-color: hsl(var(--cover-ink));
+  }
+  :where(.on-cover .sheet, .sheet) :focus-visible {
+    outline-color: hsl(var(--ballpoint));
+  }
+  /* Latin margin marks are the teacher's red italic; Ruqaa has no Latin. */
+  html[lang="en"] .font-pen {
+    font-family: var(--f-literata), Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--ruling)) transparent;
+  }
+
+  kbd {
+    font-family: inherit;
+    font-size: 0.92em;
+    padding-inline: 0.3em;
+    border: 1px solid hsl(var(--spot) / 0.5);
+    unicode-bidi: isolate;
+  }
+}
+
+@layer components {
+  /* Blue ruling; the scroll area keeps it attached to the content. */
+  .ruled {
+    background-image: linear-gradient(
+      to bottom,
+      transparent calc(var(--rule) - 1px),
+      hsl(var(--ruling)) calc(var(--rule) - 1px)
+    );
+    background-size: 100% var(--rule);
+    background-attachment: local;
+  }
+
+  /* The red double-framed stamp: the booklet's own submit mark. */
+  .stamp {
+    @apply inline-flex h-10 min-w-[4.5rem] items-center justify-center gap-2 px-4 font-print text-[0.9375rem] font-semibold text-pen transition-[opacity,background-color] duration-200;
+    border: 2px solid hsl(var(--pen));
+    box-shadow:
+      inset 0 0 0 2px hsl(var(--paper)),
+      inset 0 0 0 3px hsl(var(--pen));
+  }
+  .stamp:hover:not(:disabled) {
+    background: hsl(var(--pen) / 0.08);
+  }
+  /* At rest the frame stays in full ink; only the word waits. */
+  .stamp:disabled {
+    color: hsl(var(--pen) / 0.6);
+    cursor: not-allowed;
+  }
+
+  .pen-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-inline-start: 2px;
+    vertical-align: -0.2em;
+    background: hsl(var(--pen));
+    animation: pen-blink 1s steps(1) infinite;
+  }
+
+  /* While the agent writes, its red pen sits at the end of the text. */
+  .answer[aria-busy="true"] > :last-child:not(ul, ol)::after,
+  .answer[aria-busy="true"] > :is(ul, ol):last-child > li:last-child::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-inline-start: 3px;
+    vertical-align: -0.2em;
+    background: hsl(var(--pen));
+    animation: pen-blink 1s steps(1) infinite;
+  }
+
+  /* The signature moment: the red margin tick strokes itself in. */
+  .tick path {
+    stroke-dasharray: 24;
+    animation: tick-draw 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Answer prose: every block keeps to the ruling. */
+  .answer > * + * {
+    margin-top: var(--rule);
+  }
+  .answer h1,
+  .answer h2,
+  .answer h3,
+  .answer h4 {
+    @apply font-print font-semibold text-print;
+    font-size: 1.1875rem;
+  }
+  .answer :is(h1, h2, h3, h4) + * {
+    margin-top: 0;
+  }
+  .answer strong {
+    font-weight: 700;
+  }
+  .answer ul,
+  .answer ol {
+    padding-inline-start: 1.5rem;
+  }
+  .answer ul {
+    list-style: square;
+  }
+  .answer ol {
+    list-style: decimal;
+  }
+  html[lang="ar"] .answer ol {
+    list-style: arabic-indic;
+  }
+  .answer li::marker {
+    color: hsl(var(--spot));
+  }
+  .answer li > ul,
+  .answer li > ol {
+    margin-top: 0;
+  }
+  .answer a {
+    color: hsl(var(--ballpoint));
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .answer code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.875em;
+    padding-inline: 0.25em;
+    background: hsl(var(--ruling) / 0.45);
+  }
+  .answer pre {
+    overflow-x: auto;
+    padding-inline: 1rem;
+    outline: 1px solid hsl(var(--spot) / 0.4);
+    outline-offset: -1px;
+    background: hsl(var(--paper));
+    direction: ltr;
+    text-align: left;
+  }
+  .answer pre code {
+    padding: 0;
+    background: none;
+  }
+  .answer blockquote {
+    padding-inline-start: 1rem;
+    border-inline-start: 1px solid hsl(var(--spot));
+    color: hsl(var(--spot));
+  }
+  .answer table {
+    width: 100%;
+    border-collapse: collapse;
+    background: hsl(var(--paper));
+  }
+  .answer th,
+  .answer td {
+    padding-inline: 0.75rem;
+    text-align: start;
+    outline: 1px solid hsl(var(--spot) / 0.4);
+    outline-offset: -1px;
+  }
+  .answer hr {
+    border: 0;
+    height: var(--rule);
+    background: linear-gradient(
+      to bottom,
+      transparent calc(50% - 0.5px),
+      hsl(var(--spot) / 0.5) calc(50% - 0.5px),
+      hsl(var(--spot) / 0.5) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
+  }
+}
+
+@keyframes pen-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes tick-draw {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pen-caret,
+  .answer[aria-busy="true"] > :last-child:not(ul, ol)::after,
+  .answer[aria-busy="true"] > :is(ul, ol):last-child > li:last-child::after,
+  .tick path {
+    animation: none;
+  }
+}

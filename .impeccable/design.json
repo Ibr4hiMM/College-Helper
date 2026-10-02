@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T00:00:00Z",
+  "title": "Design System: College Helper / مساعد الجامعة",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "hsl(210 20% 96%)",
+        "cssVar": "--paper",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(210 20% 15%)",
+          "hsl(210 20% 26%)",
+          "hsl(210 20% 38%)",
+          "hsl(210 20% 50%)",
+          "hsl(210 20% 62%)",
+          "hsl(210 20% 73%)",
+          "hsl(210 20% 84%)",
+          "hsl(210 20% 95%)"
+        ]
+      },
+      "ruling": {
+        "role": "neutral",
+        "displayName": "Light-Blue Ruling",
+        "canonical": "hsl(214 50% 85%)",
+        "cssVar": "--ruling",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(214 50% 15%)",
+          "hsl(214 50% 26%)",
+          "hsl(214 50% 38%)",
+          "hsl(214 50% 50%)",
+          "hsl(214 50% 62%)",
+          "hsl(214 50% 73%)",
+          "hsl(214 50% 84%)",
+          "hsl(214 50% 95%)"
+        ]
+      },
+      "print": {
+        "role": "neutral",
+        "displayName": "Print Black",
+        "canonical": "hsl(220 12% 10%)",
+        "cssVar": "--print",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(220 12% 15%)",
+          "hsl(220 12% 26%)",
+          "hsl(220 12% 38%)",
+          "hsl(220 12% 50%)",
+          "hsl(220 12% 62%)",
+          "hsl(220 12% 73%)",
+          "hsl(220 12% 84%)",
+          "hsl(220 12% 95%)"
+        ]
+      },
+      "spot": {
+        "role": "neutral",
+        "displayName": "Spot Blue-Ink",
+        "canonical": "hsl(215 35% 37%)",
+        "cssVar": "--spot",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(215 35% 15%)",
+          "hsl(215 35% 26%)",
+          "hsl(215 35% 38%)",
+          "hsl(215 35% 50%)",
+          "hsl(215 35% 62%)",
+          "hsl(215 35% 73%)",
+          "hsl(215 35% 84%)",
+          "hsl(215 35% 95%)"
+        ]
+      },
+      "ballpoint": {
+        "role": "secondary",
+        "displayName": "Ballpoint Blue",
+        "canonical": "hsl(228 70% 39%)",
+        "cssVar": "--ballpoint",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(228 70% 15%)",
+          "hsl(228 70% 26%)",
+          "hsl(228 70% 38%)",
+          "hsl(228 70% 50%)",
+          "hsl(228 70% 62%)",
+          "hsl(228 70% 73%)",
+          "hsl(228 70% 84%)",
+          "hsl(228 70% 95%)"
+        ]
+      },
+      "pen": {
+        "role": "primary",
+        "displayName": "Teacher's Red Pen",
+        "canonical": "hsl(4 63% 48%)",
+        "cssVar": "--pen",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(4 63% 15%)",
+          "hsl(4 63% 26%)",
+          "hsl(4 63% 38%)",
+          "hsl(4 63% 50%)",
+          "hsl(4 63% 62%)",
+          "hsl(4 63% 73%)",
+          "hsl(4 63% 84%)",
+          "hsl(4 63% 95%)"
+        ]
+      },
+      "cover": {
+        "role": "secondary",
+        "displayName": "Cover Green",
+        "canonical": "hsl(171 73% 20%)",
+        "cssVar": "--cover",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(171 73% 15%)",
+          "hsl(171 73% 26%)",
+          "hsl(171 73% 38%)",
+          "hsl(171 73% 50%)",
+          "hsl(171 73% 62%)",
+          "hsl(171 73% 73%)",
+          "hsl(171 73% 84%)",
+          "hsl(171 73% 95%)"
+        ]
+      },
+      "cover-ink": {
+        "role": "neutral",
+        "displayName": "Cover Ink",
+        "canonical": "hsl(156 20% 94%)",
+        "cssVar": "--cover-ink",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(156 20% 15%)",
+          "hsl(156 20% 26%)",
+          "hsl(156 20% 38%)",
+          "hsl(156 20% 50%)",
+          "hsl(156 20% 62%)",
+          "hsl(156 20% 73%)",
+          "hsl(156 20% 84%)",
+          "hsl(156 20% 95%)"
+        ]
+      },
+      "cover-soft": {
+        "role": "neutral",
+        "displayName": "Cover Soft",
+        "canonical": "hsl(163 26% 77%)",
+        "cssVar": "--cover-soft",
+        "theme": "light",
+        "tonalRamp": [
+          "hsl(163 26% 15%)",
+          "hsl(163 26% 26%)",
+          "hsl(163 26% 38%)",
+          "hsl(163 26% 50%)",
+          "hsl(163 26% 62%)",
+          "hsl(163 26% 73%)",
+          "hsl(163 26% 84%)",
+          "hsl(163 26% 95%)"
+        ]
+      },
+      "carbon-paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper (carbon copy)",
+        "canonical": "hsl(222 45% 9%)",
+        "cssVar": "--paper",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(222 45% 15%)",
+          "hsl(222 45% 26%)",
+          "hsl(222 45% 38%)",
+          "hsl(222 45% 50%)",
+          "hsl(222 45% 62%)",
+          "hsl(222 45% 73%)",
+          "hsl(222 45% 84%)",
+          "hsl(222 45% 95%)"
+        ]
+      },
+      "carbon-ruling": {
+        "role": "neutral",
+        "displayName": "Light-Blue Ruling (carbon copy)",
+        "canonical": "hsl(221 38% 20%)",
+        "cssVar": "--ruling",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(221 38% 15%)",
+          "hsl(221 38% 26%)",
+          "hsl(221 38% 38%)",
+          "hsl(221 38% 50%)",
+          "hsl(221 38% 62%)",
+          "hsl(221 38% 73%)",
+          "hsl(221 38% 84%)",
+          "hsl(221 38% 95%)"
+        ]
+      },
+      "carbon-print": {
+        "role": "neutral",
+        "displayName": "Print Black (carbon copy)",
+        "canonical": "hsl(219 33% 92%)",
+        "cssVar": "--print",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(219 33% 15%)",
+          "hsl(219 33% 26%)",
+          "hsl(219 33% 38%)",
+          "hsl(219 33% 50%)",
+          "hsl(219 33% 62%)",
+          "hsl(219 33% 73%)",
+          "hsl(219 33% 84%)",
+          "hsl(219 33% 95%)"
+        ]
+      },
+      "carbon-spot": {
+        "role": "neutral",
+        "displayName": "Spot Blue-Ink (carbon copy)",
+        "canonical": "hsl(217 33% 68%)",
+        "cssVar": "--spot",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(217 33% 15%)",
+          "hsl(217 33% 26%)",
+          "hsl(217 33% 38%)",
+          "hsl(217 33% 50%)",
+          "hsl(217 33% 62%)",
+          "hsl(217 33% 73%)",
+          "hsl(217 33% 84%)",
+          "hsl(217 33% 95%)"
+        ]
+      },
+      "carbon-ballpoint": {
+        "role": "secondary",
+        "displayName": "Ballpoint Blue (carbon copy)",
+        "canonical": "hsl(227 100% 81%)",
+        "cssVar": "--ballpoint",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(227 100% 15%)",
+          "hsl(227 100% 26%)",
+          "hsl(227 100% 38%)",
+          "hsl(227 100% 50%)",
+          "hsl(227 100% 62%)",
+          "hsl(227 100% 73%)",
+          "hsl(227 100% 84%)",
+          "hsl(227 100% 95%)"
+        ]
+      },
+      "carbon-pen": {
+        "role": "primary",
+        "displayName": "Teacher's Red Pen (carbon copy)",
+        "canonical": "hsl(5 100% 72%)",
+        "cssVar": "--pen",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(5 100% 15%)",
+          "hsl(5 100% 26%)",
+          "hsl(5 100% 38%)",
+          "hsl(5 100% 50%)",
+          "hsl(5 100% 62%)",
+          "hsl(5 100% 73%)",
+          "hsl(5 100% 84%)",
+          "hsl(5 100% 95%)"
+        ]
+      },
+      "carbon-cover": {
+        "role": "secondary",
+        "displayName": "Cover Green (carbon copy)",
+        "canonical": "hsl(171 70% 11%)",
+        "cssVar": "--cover",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(171 70% 15%)",
+          "hsl(171 70% 26%)",
+          "hsl(171 70% 38%)",
+          "hsl(171 70% 50%)",
+          "hsl(171 70% 62%)",
+          "hsl(171 70% 73%)",
+          "hsl(171 70% 84%)",
+          "hsl(171 70% 95%)"
+        ]
+      },
+      "carbon-cover-ink": {
+        "role": "neutral",
+        "displayName": "Cover Ink (carbon copy)",
+        "canonical": "hsl(156 22% 91%)",
+        "cssVar": "--cover-ink",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(156 22% 15%)",
+          "hsl(156 22% 26%)",
+          "hsl(156 22% 38%)",
+          "hsl(156 22% 50%)",
+          "hsl(156 22% 62%)",
+          "hsl(156 22% 73%)",
+          "hsl(156 22% 84%)",
+          "hsl(156 22% 95%)"
+        ]
+      },
+      "carbon-cover-soft": {
+        "role": "neutral",
+        "displayName": "Cover Soft (carbon copy)",
+        "canonical": "hsl(162 22% 65%)",
+        "cssVar": "--cover-soft",
+        "theme": "dark",
+        "tonalRamp": [
+          "hsl(162 22% 15%)",
+          "hsl(162 22% 26%)",
+          "hsl(162 22% 38%)",
+          "hsl(162 22% 50%)",
+          "hsl(162 22% 62%)",
+          "hsl(162 22% 73%)",
+          "hsl(162 22% 84%)",
+          "hsl(162 22% 95%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Monumental cover titles on auth pages only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Empty-sheet title, two rules tall (1.875rem phone, 2.25rem sm+)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Headings inside answers, set in print."
+      },
+      "body-read": {
+        "displayName": "Body, reading",
+        "purpose": "Agent answers in print-black on the ruling."
+      },
+      "body-write": {
+        "displayName": "Body, writing",
+        "purpose": "Student questions, composer and field values in ballpoint."
+      },
+      "mark": {
+        "displayName": "Mark",
+        "purpose": "Red-pen margin marks in Arabic (Aref Ruqaa)."
+      },
+      "mark-latin": {
+        "displayName": "Mark, Latin",
+        "purpose": "Red-pen margin marks on lang=en, Literata italic 600; Ruqaa has no Latin."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Printed field labels on cover form rows, in spot."
+      },
+      "label-sm": {
+        "displayName": "Label, small",
+        "purpose": "Form-header cell labels, in spot."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 1px 2px rgb(0 0 0 / 0.22), 0 28px 56px -28px rgb(0 0 0 / 0.55)",
+        "purpose": "The paper sheet and cover label panel resting on the cover. The only lift."
+      },
+      {
+        "name": "stamp-frame",
+        "value": "inset 0 0 0 2px hsl(var(--paper)), inset 0 0 0 3px hsl(var(--pen))",
+        "purpose": "Inner line of the stamp's double frame (with a 2px pen border). Print, not depth."
+      },
+      {
+        "name": "row-focus",
+        "value": "inset 0 0 0 2px hsl(var(--ballpoint))",
+        "purpose": "Focus frame on a cover form row."
+      },
+      {
+        "name": "composer-focus",
+        "value": "0 2px 0 hsl(var(--ballpoint))",
+        "purpose": "Ballpoint underline on the composer's focus."
+      }
+    ],
+    "motion": [
+      {
+        "name": "tick-draw",
+        "value": "stroke-dasharray 24; dashoffset 24 to 0, 0.55s cubic-bezier(0.16, 1, 0.3, 1) both",
+        "purpose": "Signature: the margin tick strokes itself in when an answer completes."
+      },
+      {
+        "name": "pen-blink",
+        "value": "opacity 1 to 0 at 50%, 1s steps(1) infinite",
+        "purpose": "The red pen caret at the end of the answer being written."
+      },
+      {
+        "name": "stamp-state",
+        "value": "opacity, background-color 200ms",
+        "purpose": "Stamp hover and enable/disable."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none",
+        "purpose": "Caret and tick render static under prefers-reduced-motion: reduce. Theme switching uses no transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs-name",
+        "value": "380px",
+        "purpose": "Running head shows the product name."
+      },
+      {
+        "name": "sm",
+        "value": "640px",
+        "purpose": "Margin 3rem to 4.5rem; form header to four columns; cover rows go side by side; keyboard hint appears."
+      },
+      {
+        "name": "lg",
+        "value": "1024px",
+        "purpose": "Auth cover goes to title column plus 28rem label panel."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Stamp",
+      "kind": "button",
+      "refersTo": "stamp",
+      "description": "The red double-framed submit mark at the composer line's inline end; frame stays full ink at rest.",
+      "html": "<button class=\"ds-stamp\">اسأل</button> <button class=\"ds-stamp\" disabled>اسأل</button>",
+      "css": ".ds-stamp { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; height:2.5rem; min-width:4.5rem; padding:0 1rem; font-family:\"Readex Pro\",system-ui,sans-serif; font-size:.9375rem; font-weight:600; color:hsl(var(--pen)); background:hsl(var(--paper)); border:2px solid hsl(var(--pen)); border-radius:0; box-shadow: inset 0 0 0 2px hsl(var(--paper)), inset 0 0 0 3px hsl(var(--pen)); transition: opacity .2s, background-color .2s; cursor:pointer; } .ds-stamp:hover:not(:disabled) { background: hsl(var(--pen) / 0.08); } .ds-stamp:focus-visible { outline:2px solid hsl(var(--ballpoint)); outline-offset:2px; } .ds-stamp:disabled { color: hsl(var(--pen) / 0.6); cursor:not-allowed; }"
+    },
+    {
+      "name": "Cover Submit",
+      "kind": "button",
+      "refersTo": "cover-submit",
+      "description": "Solid cover-green action box closing a cover label panel.",
+      "html": "<button class=\"ds-cover-submit\">إنشاء الحساب</button>",
+      "css": ".ds-cover-submit { width:100%; height:3.5rem; border:0; border-radius:0; background:hsl(var(--cover)); color:hsl(var(--cover-ink)); font-family:\"Readex Pro\",system-ui,sans-serif; font-size:1rem; font-weight:600; transition: background-color .15s; cursor:pointer; } .ds-cover-submit:hover { background: hsl(var(--cover) / 0.9); } .ds-cover-submit:focus-visible { outline:2px solid hsl(var(--ballpoint)); outline-offset:2px; } .ds-cover-submit:disabled { opacity:.7; cursor:progress; }"
+    },
+    {
+      "name": "Form Row Field",
+      "kind": "input",
+      "refersTo": "form-row-input",
+      "description": "One bordered row of the cover label: printed label cell, then the ballpoint writing line.",
+      "html": "<div class=\"ds-row\" dir=\"rtl\"><label class=\"ds-row-label\" for=\"ds-email\">البريد الإلكتروني</label><div class=\"ds-row-cell\"><input id=\"ds-email\" class=\"ds-row-input\" dir=\"auto\"></div></div>",
+      "css": ".ds-row { display:grid; grid-template-columns:8.5rem 1fr; background:hsl(var(--paper)); border-bottom:1px solid hsl(var(--spot) / 0.4); } .ds-row:focus-within { box-shadow: inset 0 0 0 2px hsl(var(--ballpoint)); } .ds-row-label { display:flex; align-items:center; padding:0 1rem; border-inline-end:1px solid hsl(var(--spot) / 0.4); font-family:\"Readex Pro\",system-ui,sans-serif; font-size:.8125rem; font-weight:500; color:hsl(var(--spot)); } .ds-row-cell { padding:0 1rem; min-width:0; } .ds-row-input { height:3rem; width:100%; background:transparent; border:0; outline:none; font-family:\"Readex Pro\",system-ui,sans-serif; font-size:1rem; font-weight:500; color:hsl(var(--ballpoint)); }"
+    },
+    {
+      "name": "Running Head",
+      "kind": "nav",
+      "refersTo": "cover-control",
+      "description": "Slim head on the cover: booklet mark and name, then printed text controls.",
+      "html": "<header class=\"ds-head\" dir=\"rtl\"><a class=\"ds-head-brand\" href=\"#\"><svg viewBox=\"0 0 32 32\" width=\"28\" height=\"28\" fill=\"none\" style=\"transform:scaleX(-1)\"><rect x=\"5.75\" y=\"3.75\" width=\"20.5\" height=\"24.5\" fill=\"currentColor\" fill-opacity=\"0.08\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M10.5 4v24M12.5 4v24\" stroke=\"hsl(var(--pen))\" stroke-width=\"1\"/><path d=\"M15.5 11h7M15.5 16h7M15.5 21h4.5\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg><span>مساعد الجامعة</span></a><nav><button class=\"ds-cover-control\" lang=\"en\">English</button><button class=\"ds-cover-control\">تلقائي</button><button class=\"ds-cover-control\">خروج</button></nav></header>",
+      "css": ".ds-head { display:flex; align-items:center; justify-content:space-between; gap:.75rem; height:3.5rem; padding:0 2rem; background:hsl(var(--cover)); color:hsl(var(--cover-ink)); font-family:\"Readex Pro\",system-ui,sans-serif; } .ds-head-brand { display:flex; align-items:center; gap:.625rem; color:inherit; text-decoration:none; font-size:1.0625rem; font-weight:600; } .ds-cover-control { display:inline-flex; align-items:center; height:2.5rem; padding:0 .75rem; background:transparent; border:0; border-radius:0; color:hsl(var(--cover-ink)); font:inherit; font-size:.875rem; transition: background-color .15s; cursor:pointer; } .ds-cover-control:hover { background: hsl(var(--cover-ink) / 0.1); } .ds-cover-control:focus-visible { outline:2px solid hsl(var(--cover-ink)); outline-offset:2px; }"
+    },
+    {
+      "name": "Form Header Table",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "The sheet's printed header: university, major, date, question count.",
+      "html": "<dl class=\"ds-formhead\" dir=\"rtl\"><div><dt>الجامعة</dt><dd>جامعة الملك سعود</dd></div><div><dt>التخصص</dt><dd>علوم الحاسب</dd></div><div><dt>التاريخ</dt><dd>٢ أكتوبر ٢٠٢٦</dd></div><div><dt>الأسئلة</dt><dd>٢</dd></div></dl>",
+      "css": ".ds-formhead { display:grid; grid-template-columns:1.3fr 1.3fr 1fr auto; margin:0; background:hsl(var(--paper)); color:hsl(var(--print)); border-bottom:2px solid hsl(var(--print)); font-family:\"Readex Pro\",system-ui,sans-serif; } .ds-formhead > div { padding:.5rem 1rem; border-inline-end:1px solid hsl(var(--spot) / 0.4); } .ds-formhead > div:last-child { border-inline-end:0; } .ds-formhead dt { font-size:.6875rem; font-weight:500; color:hsl(var(--spot)); } .ds-formhead dd { margin:0; font-size:.9375rem; font-weight:600; font-variant-numeric:tabular-nums; }"
+    },
+    {
+      "name": "Ruled Entry with Margin Marks",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "A question and answer on the 2rem ruling, with the double red margin rule and the self-drawing tick.",
+      "html": "<div class=\"ds-ruled\" dir=\"rtl\"><div class=\"ds-margin-rule\"></div><div class=\"ds-entry\"><div class=\"ds-mark-col\"><span class=\"ds-mark\">س١</span><time class=\"ds-meta\">٥:١٠ ص</time></div><p class=\"ds-q\">ما هي الأفكار الأساسية التي يجب أن أتقنها أولًا؟</p></div><div class=\"ds-entry\"><div class=\"ds-mark-col\"><span class=\"ds-mark\">ج</span><svg class=\"ds-tick\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><path d=\"M4 12.5l5 5L20 6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></div><p class=\"ds-a\">تخصصك هو علوم الحاسب، وهذه ثلاث أفكار أساسية تبدأ بها.</p></div></div>",
+      "css": ".ds-ruled { position:relative; padding:2rem 0; background-color:hsl(var(--paper)); background-image:linear-gradient(to bottom, transparent calc(2rem - 1px), hsl(var(--ruling)) calc(2rem - 1px)); background-size:100% 2rem; } .ds-margin-rule { position:absolute; top:0; bottom:0; inset-inline-start:4.5rem; width:5px; border-inline:1px solid hsl(var(--pen) / 0.6); } .ds-entry { display:grid; grid-template-columns:4.5rem minmax(0,1fr); } .ds-mark-col { display:grid; align-content:start; justify-items:center; } .ds-mark { font-family:\"Aref Ruqaa\",serif; font-weight:700; font-size:1.375rem; line-height:2rem; color:hsl(var(--pen)); } .ds-meta { font-family:\"Readex Pro\",system-ui,sans-serif; font-size:.75rem; line-height:2rem; color:hsl(var(--pen)); } .ds-q { margin:0; padding-inline:1.25rem; font-family:\"Readex Pro\",system-ui,sans-serif; font-size:1.0625rem; font-weight:500; line-height:2rem; color:hsl(var(--ballpoint)); } .ds-a { margin:0; padding-inline:1.25rem; font-family:\"Literata\",\"Noto Naskh Arabic\",Georgia,serif; font-size:1.125rem; line-height:2rem; color:hsl(var(--print)); } .ds-tick { margin:.375rem 0; color:hsl(var(--pen)); } .ds-tick path { stroke-dasharray:24; animation: ds-tick-draw .55s cubic-bezier(0.16,1,0.3,1) both; } @keyframes ds-tick-draw { from { stroke-dashoffset:24; } to { stroke-dashoffset:0; } } @media (prefers-reduced-motion: reduce) { .ds-tick path { animation:none; } }"
+    },
+    {
+      "name": "Composer Line",
+      "kind": "input",
+      "refersTo": "stamp",
+      "description": "The next ruled line: margin mark, ballpoint textarea, stamp.",
+      "html": "<form class=\"ds-composer\" dir=\"rtl\"><label class=\"ds-composer-mark\" for=\"ds-msg\">س٣</label><textarea id=\"ds-msg\" class=\"ds-composer-input\" rows=\"1\" placeholder=\"اكتب سؤالك هنا\"></textarea><button class=\"ds-stamp-c\" type=\"submit\" disabled>اسأل</button></form>",
+      "css": ".ds-composer { display:grid; grid-template-columns:4.5rem minmax(0,1fr) auto; align-items:start; padding-bottom:.5rem; background-color:hsl(var(--paper)); background-image:linear-gradient(to bottom, transparent calc(2rem - 1px), hsl(var(--ruling)) calc(2rem - 1px)); background-size:100% 2rem; } .ds-composer-mark { text-align:center; font-family:\"Aref Ruqaa\",serif; font-weight:700; font-size:1.375rem; line-height:2rem; color:hsl(var(--pen)); } .ds-composer-input { min-height:2rem; max-height:12rem; resize:none; border:0; outline:none; background:transparent; padding-inline:1.25rem .75rem; font-family:\"Readex Pro\",system-ui,sans-serif; font-size:1.0625rem; font-weight:500; line-height:2rem; color:hsl(var(--ballpoint)); } .ds-composer-input::placeholder { font-weight:400; color:hsl(var(--spot)); } .ds-composer-input:focus-visible { box-shadow:0 2px 0 hsl(var(--ballpoint)); } .ds-stamp-c { margin-inline-end:1.25rem; height:2.5rem; min-width:4.5rem; padding:0 1rem; font-family:\"Readex Pro\",system-ui,sans-serif; font-size:.9375rem; font-weight:600; color:hsl(var(--pen)); background:hsl(var(--paper)); border:2px solid hsl(var(--pen)); border-radius:0; box-shadow: inset 0 0 0 2px hsl(var(--paper)), inset 0 0 0 3px hsl(var(--pen)); } .ds-stamp-c:disabled { color:hsl(var(--pen) / 0.6); cursor:not-allowed; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Answer Booklet (كراسة الإجابة)",
+    "overview": "Every conversation is an exam answer booklet. A deep green cover frames a single sheet of cool paper. The sheet carries a printed form header with the student's university, major, date and question count. Below the header sits a light-blue ruled body with a double red margin rule on the inline-start side. The student writes questions in ballpoint blue on the next ruled line. The agent's answer is set in reading type below each question. The red margin holds the teacher's marks: the question number (س١ / Q1), the time, the answer mark (ج / A), and a tick that strokes itself in when the answer is done.\n\nThe system has no generic chrome. Every control is a mark the booklet would carry anyway: submit is a red double-framed stamp, the header controls are printed words on the cover, and form fields are bordered rows of a cover label. Density is calm and steady. Every line box on the sheet is one rule tall, so long sessions read like a filled-in page and never like a feed. The whole system is designed in RTL first and mirrors to LTR through logical properties, so the margin, the stamp and the booklet glyph all flip sides with `dir`.\n\nThe sheet rejects the chat-bubble thread and the floating, centered text box.",
+    "keyCharacteristics": [
+      "Nine inks and nothing else, in light and in carbon-copy dark.",
+      "A 2rem ruling that is also the baseline grid.",
+      "A double red margin rule on the inline-start side that flips with the script.",
+      "Square corners, 1px printed cell borders, form-box tables.",
+      "Four faces with fixed jobs: print, reading, red pen, and an italic Latin fallback for the pen.",
+      "Arabic-Indic digits throughout Arabic pages.",
+      "One signature motion: the margin tick drawing itself in."
+    ],
+    "rules": [
+      {
+        "name": "The Ink Discipline Rule",
+        "body": "Only the nine booklet inks exist. Never add a hex value or a Tailwind palette color. Tints are alpha on an existing ink (`/0.4` borders, `/0.08` stamp hover, `/0.2` selection). They are never new hues.",
+        "section": "colors"
+      },
+      {
+        "name": "The Carbon Copy Rule",
+        "body": "Dark mode is a carbon copy of the same booklet: a navy-black sheet, dim ruling, pale ink, and a deeper cover. Every ink keeps its role and changes only its value. There are no dark-only colors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Floor Rule",
+        "body": "Every text ink meets WCAG AA (4.5:1) on its own ground in both themes. Measured: print on paper is 16.2 light and 15.2 dark, spot is 6.5 and 7.6, ballpoint is 8.6 and 9.2, pen is 4.75 and 7.4. Cover-ink on cover is 7.4 and 12.0, and cover-soft is 5.2 and 6.7. Light pen is the tightest pair, so don't lighten it or put pen text at an alpha.",
+        "section": "colors"
+      },
+      {
+        "name": "The Literal Reading Stack Rule",
+        "body": "The reading stack uses literal family names (`\"Literata\", \"Noto Naskh Arabic\", Georgia, serif`), not the next/font CSS variables. Each next/font variable carries a Times-based \"Fallback\" face that has Arabic glyphs and would shadow Naskh. The tailwind config keeps a `ponytail:` comment that explains this. Don't \"fix\" the stack back to variables.",
+        "section": "typography"
+      },
+      {
+        "name": "The Pen Has No Latin Rule",
+        "body": "Ruqaa has no Latin glyphs. On `lang=\"en\"` the pen role switches to Literata italic 600, which is still the teacher's red hand.",
+        "section": "typography"
+      },
+      {
+        "name": "The Unspaced Arabic Rule",
+        "body": "Arabic is never letter-spaced. `html[lang=\"ar\"]` forces `letter-spacing: 0` everywhere, including the display tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Arabic-Indic Digits Rule",
+        "body": "Arabic pages format every number, date and time with `ar-u-nu-arab` (Intl), and ordered lists use `arabic-indic` markers, so the digits match across marks, header cells and lists.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruling Is The Baseline Rule",
+        "body": "The rule pitch `--rule` (2rem) is the line height of every line box on the sheet. Answer blocks are separated by exactly one rule. Headlines take two rules. The composer grows in whole rules, up to six. The `.ruled` background draws a 1px ruling line at the bottom of each 2rem band, and `background-attachment: local` keeps the ruling attached to the scrolling text.",
+        "section": "layout"
+      },
+      {
+        "name": "The Bilateral Margin Rule",
+        "body": "The margin column (`--margin`: 4.5rem, or 3rem below 640px) and the double red margin rule always sit on the inline-start side. They are built only with logical properties (`start-*`, `ps`/`pe`, `border-e`, `border-inline-start`, `margin-inline-start`), so they flip sides with `dir`. The margin never collapses, not even on phones. Never use physical `left`/`right`, `pl`/`pr` or `ml`/`mr` on the booklet.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Lift Rule",
+        "body": "Only a sheet of paper casts a shadow. Content on the sheet stays flat, and structure comes from 1px printed borders.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do set every sheet line box to `leading-rule` (2rem) and separate blocks by whole rules.",
+      "Do use only logical properties on the booklet, so the margin and the stamp flip with `dir`.",
+      "Do put the student's words in ballpoint and the agent's answer in print, and keep red for the margin, the stamp and errors.",
+      "Do format numbers with `ar-u-nu-arab` on Arabic pages.",
+      "Do keep the stamp's frame at full ink when disabled, and dim only the word.",
+      "Do give every animation a `prefers-reduced-motion: reduce` static state.",
+      "Do show focus: a 2px ballpoint outline on the sheet, cover-ink on the cover, and a 2px inset frame on form rows."
+    ],
+    "donts": [
+      "Don't introduce colors outside the nine inks, or dark-only colors.",
+      "Don't round corners on cells, sheets, buttons or fields.",
+      "Don't set chat bubbles or a floating centered input. The composer is a ruled line.",
+      "Don't letter-space Arabic.",
+      "Don't use Ruqaa outside margin marks, or for Latin text.",
+      "Don't swap the reading stack back to next/font variables.",
+      "Don't add shadows to anything except a sheet of paper."
+    ]
+  }
+}

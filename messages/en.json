@@ -1,0 +1,135 @@
+{
+  "app": {
+    "name": "College Helper",
+    "description": "A study companion for Saudi university students.",
+    "colophon": "College Helper · An answer booklet for Saudi university students"
+  },
+  "common": {
+    "language": "Language",
+    "switchTo": "العربية",
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "themeLabel": "Theme",
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "Auto"
+    }
+  },
+  "login": {
+    "title": "Open your booklet",
+    "description": "Log in to pick up your questions where you left off.",
+    "forgot": "Forgot your password?",
+    "submit": "Log in",
+    "submitting": "Logging in...",
+    "noAccount": "No account yet?",
+    "signUp": "Sign up",
+    "caption": "Your details",
+    "notesTitle": "Instructions",
+    "notes": {
+      "one": "Use the email and password you created your booklet with.",
+      "two": "Forgot your password? Use the reset link in the form."
+    }
+  },
+  "signUp": {
+    "title": "A new booklet",
+    "description": "Write your university and major on the cover. Every answer after that is written for your program.",
+    "repeatPassword": "Repeat password",
+    "university": "University",
+    "major": "Major",
+    "chooseUniversity": "Choose your university",
+    "chooseMajor": "Choose your major",
+    "chooseUniversityFirst": "Choose a university first",
+    "submit": "Create account",
+    "submitting": "Creating your account...",
+    "hasAccount": "Already have an account?",
+    "login": "Log in",
+    "passwordHint": "At least 8 characters.",
+    "successTitle": "Check your email",
+    "successBody": "We sent a confirmation link. Confirm your address, then log in.",
+    "caption": "Student details",
+    "notesTitle": "Instructions",
+    "notes": {
+      "one": "Choose your university, then your major.",
+      "two": "Ask about your courses, assignments, research and projects.",
+      "three": "Every answer is written for your major, and the margin shows what the assistant did."
+    }
+  },
+  "forgot": {
+    "title": "Reset your password",
+    "description": "Enter your email and we will send you a reset link.",
+    "submit": "Send reset link",
+    "submitting": "Sending...",
+    "sentTitle": "Check your email",
+    "sentBody": "If an account exists for that address, a reset link is on its way.",
+    "back": "Back to log in"
+  },
+  "update": {
+    "title": "Choose a new password",
+    "description": "Enter a new password for your account.",
+    "newPassword": "New password",
+    "submit": "Save password",
+    "submitting": "Saving..."
+  },
+  "authError": {
+    "title": "That link did not work",
+    "body": "The link may have expired or already been used. Request a new one and try again.",
+    "back": "Back to log in"
+  },
+  "errors": {
+    "emailInvalid": "Enter a valid email address.",
+    "passwordShort": "Password must be at least 8 characters.",
+    "passwordMismatch": "The passwords do not match.",
+    "universityRequired": "Choose your university.",
+    "majorRequired": "Choose your major.",
+    "majorMismatch": "That major is not offered by the chosen university.",
+    "invalidCredentials": "Wrong email or password.",
+    "userExists": "An account with this email already exists. Try logging in.",
+    "weakPassword": "That password is too easy to guess. Choose a stronger one.",
+    "rateLimited": "Too many attempts. Wait a moment and try again.",
+    "profileInvalid": "We could not save your university and major. Check both and try again.",
+    "generic": "Something went wrong. Please try again.",
+    "emailNotConfirmed": "Confirm your email first using the link we sent, then log in."
+  },
+  "chat": {
+    "university": "University",
+    "major": "Major",
+    "date": "Date",
+    "questions": "Questions",
+    "q": "Q{n}",
+    "a": "A",
+    "emptyTitle": "What are you studying today?",
+    "emptyBody": "Answers are written for {major} at {university}.",
+    "instructionsTitle": "Instructions",
+    "instructions": {
+      "one": "Write your question on the last line, then press Ask.",
+      "two": "The answer is written below it, and the assistant's marks appear in the red margin.",
+      "three": "You can stop the writing at any time from the answer's margin."
+    },
+    "suggestionsTitle": "Suggested questions",
+    "ordinal": {
+      "one": "Question 1",
+      "two": "Question 2",
+      "three": "Question 3"
+    },
+    "suggestions": {
+      "one": "Explain the core ideas I should master first in {major}.",
+      "two": "Help me build a weekly study plan for my {major} courses.",
+      "three": "How do I start a research project in {major}?"
+    },
+    "inputLabel": "Your message",
+    "placeholder": "Write your question here",
+    "hint": "<kbd>Enter</kbd> to ask, <kbd>Shift+Enter</kbd> for a new line",
+    "send": "Ask",
+    "stop": "Stop",
+    "stopped": "Stopped",
+    "writing": "Writing the answer",
+    "done": "Answer complete",
+    "you": "Your question",
+    "assistant": "Assistant's answer",
+    "unavailable": "The assistant isn't available right now because the service isn't set up yet, so no answer was written. Try again later.",
+    "error": "The answer didn't arrive. Your question is kept here, and you can try again.",
+    "retry": "Try again"
+  }
+}

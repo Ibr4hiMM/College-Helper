@@ -1,0 +1,104 @@
+{
+  "title": "Choose the visual world",
+  "question": "College Helper: pick the world the sign-up and chat screens are rebuilt in. Keep the lead, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Answer Booklet · كراسة الإجابة",
+      "kicker": "THE ROLL",
+      "lineage": "Saudi university exam answer booklets: printed cover form, blue-ruled pages, red margin rule, س / ج numbering",
+      "thesis": "Every conversation is a booklet. You write the question on the next ruled line (س١), the agent writes the answer (ج), and the red margin carries the marks: which course it's about, which sources it read, what it did. No chat bubbles, no floating text box.",
+      "palette": ["#F5F7FA", "#B8CCE6", "#2140B8", "#D2463C", "#141619", "#0E5A4E"],
+      "materials": ["printed form boxes", "blue ruling", "red margin rule", "ballpoint-blue ink", "carbon-copy dark mode"],
+      "viewport": "Chat: a full-width booklet page. A printed header strip (university · major · date · page number), then the red margin on the start side holding س١ / س٢ numerals and red tick-marks for the agent's steps. Answers are set on the ruling, and the composer is simply the next blank line «س٣:» with the caret on it. Sign-up: the booklet's colored cover, its form boxes (university, major, email) as the actual fields.",
+      "risk": "Exams carry stress for some students, so the warmth has to come from the agent's voice and the calm ink, not from the metaphor. A paper texture or fake handwriting on long text would tip it into kitsch, so it stays flat and print-precise.",
+      "raised": [
+        { "from": "challenger-ikeda-datamatics", "raise": "Ink discipline: only the booklet's own inks exist (paper, ruling blue, margin red, ballpoint blue, print black). No stray grays, no extra accent." },
+        { "from": "challenger-labanotation", "raise": "Bilateral invariant: the margin column flips sides with the script and never collapses, even at 360 px." },
+        { "from": "challenger-metro-tiles", "raise": "Chrome deleted: controls are the form's own marks (boxes, ruled lines, tick marks, a «سلّم» submit stamp), never generic pill buttons." },
+        { "from": "challenger-crouwel-grid", "raise": "The ruling IS the baseline grid: line-height equals the rule pitch and every line of text sits on a rule." },
+        { "from": "challenger-character-goods", "raise": "Fixed personal furniture: every question carries its number, time and course code like a name plate." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "The Study Plan · الخطة الدراسية",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "the official study-plan sheet every Saudi student gets: courses by level, codes, credit hours, prerequisite lines",
+      "thesis": "The conversation sits on top of your own study plan. Ask about a course and its cell lights up; answers dock beside the plan and cite the course code.",
+      "palette": ["#FFFFFF", "#DDE3EA", "#1D2B3A", "#7A2E8C"],
+      "materials": ["registrar grid", "course-code cells", "prerequisite lines", "a registrar's stamp color"],
+      "viewport": "A level-by-level course grid on the start side, the conversation column on the end side, the active course cell highlighted.",
+      "risk": "The closest to what most runs ship for a 'university tool'. It can tip into a dense dashboard, and it waits on real curriculum data to look alive."
+    },
+    {
+      "id": "challenger-terminal-wayfinding",
+      "label": "Study Wayfinding",
+      "verdict": "competitive",
+      "lineage": "bilingual airport and metro sign systems: yellow bands, black humanist sans, pictograms, edge-locked arrows",
+      "thesis": "Every answer ends at a junction: one sign band per agent step, and the next decision points ahead (practice set → 10 min, read chapter 3 → 25 min).",
+      "palette": ["#FFCC00", "#0B0B0B", "#1A1A1A", "#E6E6E6", "#FFFFFF"],
+      "materials": ["sign panels", "pictogram insets", "split-flap updates"],
+      "viewport": "A sticky yellow band holding the current question, with answers below as corridors and the next decisions as monumental arrows.",
+      "case": "It fuses cleanly, since bilingual signage is native to Saudi airports and the Riyadh Metro, and it makes the agent's steps very legible. It loses on audience identification: it's a travel world, not a study one.",
+      "risk": "Saturated yellow is tiring over a three-hour reading session, and pictograms crowd Arabic text.",
+      "hero": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-terminal-yellow-wayfinding-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-terminal-yellow-wayfinding.webp"
+    },
+    {
+      "id": "challenger-crouwel-grid",
+      "label": "Gridded Type Specimen",
+      "verdict": "declined",
+      "lineage": "Wim Crouwel grid-constructed type",
+      "palette": ["#FFFFFF", "#0057FF", "#111111"],
+      "materials": ["visible construction grid"],
+      "case": "Students don't identify with a type specimen, and grid-built Latin letterforms have no Arabic counterpart.",
+      "kept": "The ruling is the real baseline grid.",
+      "hero": "https://impeccable.style/worlds/cards/crouwel-grid-specimen-hero.webp"
+    },
+    {
+      "id": "challenger-ikeda-datamatics",
+      "label": "Datamatics Field",
+      "verdict": "declined",
+      "lineage": "Ryoji Ikeda data-sublime installations",
+      "palette": ["#000000", "#FFFFFF"],
+      "materials": ["barcode fields", "sine lattice"],
+      "case": "Pure strobe and data noise works against calm study and gives no study identity.",
+      "kept": "Total ink discipline: no stray grays.",
+      "hero": "https://impeccable.style/worlds/cards/ikeda-datamatics-hero.webp"
+    },
+    {
+      "id": "challenger-labanotation",
+      "label": "Labanotation Score",
+      "verdict": "declined",
+      "lineage": "dance notation, a center staff read upward",
+      "palette": ["#FFFFFF", "#000000", "#E5E5E5"],
+      "materials": ["shaded symbol blocks"],
+      "case": "Unreadable to students, and the upward time axis fights chat order.",
+      "kept": "The bilateral mirror is the layout law.",
+      "hero": "https://impeccable.style/worlds/cards/notation-diagram-systems-labanotation-hero.webp"
+    },
+    {
+      "id": "challenger-metro-tiles",
+      "label": "Metro Typographic Tiles",
+      "verdict": "declined",
+      "lineage": "Windows Phone Metro design language",
+      "palette": ["#000000", "#00ABA9", "#FFFFFF"],
+      "materials": ["flat tiles", "cropped giant lowercase"],
+      "case": "It reads as a dated phone UI, and cropped giant lowercase has no Arabic equivalent.",
+      "kept": "Chrome deleted, so the form's own marks are the controls.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-metro-typographic-tiles-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A polished AI chat app: a conversation sidebar, a centered message column, a composer docked at the bottom. Executed at full craft.",
+    "palette": ["#FFFFFF", "#F4F4F5", "#18181B", "#2563EB"],
+    "materials": ["clean neutral grid", "soft surfaces"],
+    "viewport": "The arrangement every chat product uses: sidebar, thread, composer.",
+    "risk": "Exactly the 'ChatGPT clone' you said you don't want."
+  },
+  "steer": true
+}
