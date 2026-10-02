@@ -1,4 +1,5 @@
 import { type Page, expect, test as base } from "@playwright/test";
+import { createClient } from "@supabase/supabase-js";
 
 // Prerequisite: Supabase "Confirm email" is OFF, so sign-up returns a session and lands on /chat.
 // Each run leaves a couple of e2e+<timestamp> users behind; delete them from the Auth dashboard when needed.
@@ -213,4 +214,67 @@ test("no horizontal overflow at 360px", async ({ authed: page }) => {
   await expect(anon.getByLabel("University")).toBeVisible();
   expect(await anon.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false);
   await ctx.close();
+});
+
+test("curriculum search: the margin marks it, the writing line shows it, and a miss is printed", async ({ authed: page }) => {
+  await ask(page, "CURRICULUM SLOWEMBED what are the prerequisites?");
+  await expect(page.getByText("Searching the Computer Science curriculum")).toBeVisible();
+  await expect(page.locator("svg.tick")).toHaveCount(1);
+  await expect(page.getByText("Syllabus")).toBeVisible();
+  await expect(page.getByText("No matching course was found in your curriculum.")).toBeVisible();
+  await expect(page.getByText("Searching the Computer Science curriculum")).toHaveCount(0);
+});
+
+test("a model that keeps searching is told to write on the last step", async ({ authed: page }) => {
+  await ask(page, "CURRICULUM LOOP keep looking");
+  await expect(page.locator("svg.tick")).toHaveCount(1);
+  await expect(page.locator("article").last()).toContainText("Final answer after 3 searches.");
+});
+
+test("a failed curriculum search is printed, and its cause reaches neither the model nor the page", async ({ authed: page }) => {
+  const body = page.waitForResponse((r) => new URL(r.url()).pathname === "/api/chat").then((r) => r.text());
+  await ask(page, "CURRICULUM EMBEDFAIL syllabus");
+  await expect(page.getByText("The curriculum search didn't work this time.")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator("article").last()).not.toContainText("LEAKED");
+  expect(await body).not.toContain("exploded");
+});
+
+// Hits need rows to find. The app can't write curriculum, so the fixture is seeded here with the secret key;
+// or insert the same rows another way and set E2E_FIXTURE_SEEDED=1.
+const FIXTURE = "DEMO e2e fixture";
+test.describe("curriculum hits", () => {
+  const secret = process.env.SUPABASE_SECRET_KEY;
+  test.skip(!secret && !process.env.E2E_FIXTURE_SEEDED, "needs SUPABASE_SECRET_KEY to seed fixture rows");
+  const admin = () => createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, secret!, { auth: { persistSession: false } });
+
+  test.beforeAll(async () => {
+    if (!secret) return;
+    const db = admin();
+    // Clear leftovers from a crashed run. (They never reach students anyway: real query embeddings
+    // score near 0 against this one-hot vector, far below the similarity floor.)
+    await db.from("curriculum_chunks").delete().eq("source", FIXTURE);
+    const { data: majors, error } = await db.from("majors").select("id, slug").eq("university_id", "ksu").in("slug", ["computer-science", "information-systems"]);
+    if (error) throw error;
+    const id = (slug: string) => majors!.find((m) => m.slug === slug)!.id;
+    // Both rows sit at the E2E-HIT embedding; only the student's own major may come back.
+    const embedding = Array.from({ length: 1536 }, (_, k) => (k === 0 ? 1 : 0));
+    const row = (course_code: string, major_id: number) => ({
+      university_id: "ksu", major_id, course_code, title: `${course_code} fixture`, lang: "en", content: "Fixture.", source: FIXTURE, content_hash: `e2e-${course_code}`, embedding,
+    });
+    const { error: insertError } = await db.from("curriculum_chunks").upsert([row("E2E-101", id("computer-science")), row("E2E-OTHER", id("information-systems"))], { onConflict: "content_hash" });
+    if (insertError) throw insertError;
+  });
+  test.afterAll(async () => {
+    if (secret) await admin().from("curriculum_chunks").delete().eq("source", FIXTURE);
+  });
+
+  test("hits print a sources footnote, scoped to the student's major, flagged as sample data", async ({ authed: page }) => {
+    await ask(page, "CURRICULUM E2E-HIT what does this course cover?");
+    await expect(page.locator("svg.tick")).toHaveCount(1);
+    const footnote = page.locator("article footer").filter({ hasText: "From your curriculum" });
+    await expect(footnote).toContainText("E2E-101");
+    await expect(footnote).toContainText("sample data");
+    await expect(footnote).not.toContainText("E2E-OTHER");
+    await expect(page.locator("article").last()).toContainText("From your curriculum: E2E-101.");
+  });
 });

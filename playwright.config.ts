@@ -1,7 +1,7 @@
 import { defineConfig } from "@playwright/test";
 
 // Supabase vars come from .env.local (Playwright doesn't read Next's env files).
-// Anthropic vars are pinned below on the app's env, so they win over .env.local.
+// Anthropic and OpenAI vars are pinned below on the app's env, so they win over .env.local.
 try {
   process.loadEnvFile(".env.local");
 } catch {}
@@ -29,6 +29,8 @@ export default defineConfig({
       env: {
         ANTHROPIC_BASE_URL: `http://localhost:${MOCK_PORT}/v1`,
         ANTHROPIC_API_KEY: "e2e-mock",
+        OPENAI_BASE_URL: `http://localhost:${MOCK_PORT}/v1`,
+        OPENAI_API_KEY: "e2e-mock",
       },
     },
   ],

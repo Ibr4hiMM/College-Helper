@@ -49,12 +49,14 @@ const client = (data: unknown, error: unknown = null) =>
   ({ from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data, error }) }) }) }) }) as unknown as SupabaseClient;
 const row = (level: unknown) => ({
   level,
+  university_id: "ksu",
+  major_id: 1,
   majors: { name_ar: "علوم الحاسب", name_en: "Computer Science", universities: { name_ar: "جامعة الملك سعود", name_en: "King Saud University" } },
 });
 
 describe("getProfile", () => {
   it("returns names and a known level", async () => {
-    expect(await getProfile(client(row("final")), "u1")).toMatchObject({ level: "final", major: { name_en: "Computer Science" } });
+    expect(await getProfile(client(row("final")), "u1")).toMatchObject({ level: "final", university_id: "ksu", major_id: 1, major: { name_en: "Computer Science" } });
   });
   it("maps a missing or unknown level to null", async () => {
     expect((await getProfile(client(row(null)), "u1"))?.level).toBeNull();

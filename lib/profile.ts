@@ -32,6 +32,9 @@ export const signUpSchema = (majors: MajorRef[]) =>
 
 type Names = { name_ar: string; name_en: string };
 export type Profile = {
+  // Ids scope curriculum search; they come from the DB row, never from the client or the model.
+  university_id: string;
+  major_id: number;
   university: Names;
   major: Names;
   // null for accounts created before levels existed.
@@ -46,7 +49,7 @@ export async function getProfile(
   // Filter explicitly as well as relying on RLS; a query failure is an error, not "no profile".
   const { data, error } = await supabase
     .from("profiles")
-    .select("level, majors(name_ar, name_en, universities(name_ar, name_en))")
+    .select("level, university_id, major_id, majors(name_ar, name_en, universities(name_ar, name_en))")
     .eq("id", userId)
     .maybeSingle();
   if (error) throw error;
@@ -57,5 +60,5 @@ export async function getProfile(
   if (!major) return null;
   const { universities: university, ...names } = major;
   const level = LEVELS.find((l) => l === data?.level) ?? null;
-  return { university, major: names, level };
+  return { university_id: data!.university_id, major_id: data!.major_id, university, major: names, level };
 }

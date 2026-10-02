@@ -6,10 +6,12 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "ingest": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/ingest.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.71",
+    "@ai-sdk/openai": "^4.0.83",
     "@ai-sdk/react": "^4.0.130",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",

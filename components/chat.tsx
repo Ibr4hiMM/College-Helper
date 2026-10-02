@@ -11,6 +11,7 @@ import Markdown from "react-markdown";
 
 import { Header } from "@/components/header";
 import { LogoutButton } from "@/components/logout-button";
+import { curriculumMarks } from "@/lib/curriculum-marks";
 import type { Level } from "@/lib/profile";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +22,11 @@ const mark = "font-pen text-[1.375rem] leading-rule text-pen";
 const row = "grid grid-cols-[var(--margin)_minmax(0,1fr)]";
 const body = "ps-5 pe-5 sm:pe-8";
 
-const textOf = (m: Message) => m.parts.map((p) => (p.type === "text" ? p.text : "")).join("");
+// Each step of a tool-using answer is its own text part; keep them as separate paragraphs.
+const textOf = (m: Message) =>
+  m.parts
+    .flatMap((p) => (p.type === "text" && p.text ? [p.text] : []))
+    .join("\n\n");
 
 /** The signature mark: a red tick that strokes itself in when an answer completes. */
 function Tick({ label }: { label: string }) {
@@ -154,12 +159,19 @@ export function Chat({ university, major, level }: { university: string; major: 
     const isLast = i === messages.length - 1;
     const writing = isLast && streaming;
     const failed = isLast && !!error;
+    const marks = curriculumMarks(m.parts);
     return (
       <li key={m.id} className={row}>
         <div className="grid content-start justify-items-center">
           <span aria-hidden className={mark}>
             {t("a")}
           </span>
+          {/* What the agent did: it looked in the student's curriculum. */}
+          {marks.used && (
+            <span aria-hidden className="text-xs leading-rule text-pen">
+              {t("curriculumMark")}
+            </span>
+          )}
           {writing ? (
             stopMark
           ) : failed ? null : stopped.current.has(m.id) ? (
@@ -186,6 +198,30 @@ export function Chat({ university, major, level }: { university: string; major: 
           >
             {content}
           </Markdown>
+          {/* Last child while busy, so the pen caret blinks after it. */}
+          {writing && marks.used && (marks.searching || (!content && !marks.failed)) && (
+            <p className="font-print text-base text-spot">{t("searching", { major })}</p>
+          )}
+          {/* The printed footnote arrives with the tick, so the caret never sits after it. */}
+          {!writing && marks.used && !marks.searching && (
+            <footer className="font-print text-sm text-spot">
+              {marks.sources.length ? (
+                <>
+                  <p className="font-medium">{t("sourcesTitle")}</p>
+                  <ol>
+                    {marks.sources.map((s) => (
+                      <li key={s.course_code}>
+                        <bdi className="font-medium">{s.course_code}</bdi> <bdi>{s.title}</bdi>
+                        {s.demo && <> · {t("demo")}</>}
+                      </li>
+                    ))}
+                  </ol>
+                </>
+              ) : (
+                <p>{marks.failed ? t("searchFailed") : t("noMatch")}</p>
+              )}
+            </footer>
+          )}
         </article>
       </li>
     );

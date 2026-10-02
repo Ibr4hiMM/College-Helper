@@ -161,7 +161,13 @@
     "unavailable": "The assistant isn't available right now because the service isn't set up yet, so no answer was written. Try again later.",
     "error": "The answer didn't arrive. Your question is kept here, and you can try again.",
     "retry": "Try again",
-    "level": "Level"
+    "level": "Level",
+    "curriculumMark": "Syllabus",
+    "searching": "Searching the {major} curriculum",
+    "sourcesTitle": "From your curriculum",
+    "demo": "sample data",
+    "noMatch": "No matching course was found in your curriculum.",
+    "searchFailed": "The curriculum search didn't work this time."
   },
   "levels": {
     "long": {
